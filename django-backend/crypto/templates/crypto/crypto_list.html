@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cryptocurrencies</title>
+</head>
+<body>
+    <h1>Cryptocurrencies</h1>
+    <ul>
+        {% for crypto in cryptos %}
+            <li><a href="{{ crypto.id }}/">{{ crypto.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

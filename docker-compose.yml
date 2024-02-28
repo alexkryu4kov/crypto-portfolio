@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  django-backend:
+    build: ./django-backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - data-volume:/code/data
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+
+  go-service:
+    build: ./crypto-go
+    volumes:
+      - data-volume:/app/data # Assuming your Go service writes to /app/data
+    depends_on:
+      - django-backend
+
+volumes:
+  data-volume:
